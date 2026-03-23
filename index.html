@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brian Roary — Eucharistic Marian Remnant Army</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0a1628;--gold:#d4a843;--cream:#f5e6c8;--charcoal:#1a1a2e;--orange:#e8a020;--dark:#0d0d1a;--card-bg:#111133;--text:#e0ddd5;--text-muted:#a09c94;--accent-red:#8b0000}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Times New Roman',serif;background:var(--navy);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--orange);text-decoration:none;transition:color .3s}
+a:hover{color:var(--gold);text-decoration:underline}
+h1,h2,h3,h4{font-family:'Georgia',serif;color:var(--gold)}
+img{max-width:100%}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,168,67,.15);transition:all .4s;padding:0 2rem}
+.navbar.scrolled{background:rgba(10,22,40,.98);box-shadow:0 4px 30px rgba(0,0,0,.5)}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:1.4rem;color:var(--gold);font-weight:bold;letter-spacing:2px;white-space:nowrap}
+.nav-links{display:flex;gap:1.2rem;align-items:center;flex-wrap:nowrap}
+.nav-links a{color:var(--cream);font-size:.85rem;text-transform:uppercase;letter-spacing:1px;text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--orange)}
+.vault-btn{background:linear-gradient(135deg,var(--gold),#b8922e);color:var(--navy);border:none;padding:.4rem 1rem;border-radius:4px;cursor:pointer;font-weight:bold;font-size:.9rem;transition:transform .2s}
+.vault-btn:hover{transform:scale(1.05)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{width:28px;height:2px;background:var(--gold);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;width:100%;background:rgba(10,22,40,.98);padding:1rem 2rem;flex-direction:column;gap:.8rem;border-bottom:1px solid rgba(212,168,67,.2)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--cream);font-size:1rem;padding:.4rem 0}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 2rem 80px;background:linear-gradient(180deg,var(--navy) 0%,var(--charcoal) 50%,var(--navy) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,rgba(212,168,67,.06) 0%,transparent 70%);pointer-events:none}
+.hero-cross{font-size:4rem;color:var(--gold);margin-bottom:1rem;opacity:.7;animation:glow 4s ease-in-out infinite}
+@keyframes glow{0%,100%{text-shadow:0 0 20px rgba(212,168,67,.3)}50%{text-shadow:0 0 40px rgba(212,168,67,.6)}}
+.hero h1{font-size:3.5rem;color:var(--gold);margin-bottom:.5rem;letter-spacing:4px}
+.hero .tagline{font-size:1.3rem;color:var(--cream);max-width:700px;margin:1rem auto;font-style:italic}
+.hero .scripture{font-size:1.05rem;color:var(--text-muted);margin:1.5rem auto;max-width:600px;font-style:italic}
+.hero .scripture em{color:var(--gold)}
+.hero-ctas{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-block;padding:.8rem 2rem;border-radius:4px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;font-size:.9rem;transition:all .3s;cursor:pointer;text-decoration:none;border:none}
+.btn-gold{background:linear-gradient(135deg,var(--gold),#b8922e);color:var(--navy)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,168,67,.3);color:var(--navy);text-decoration:none}
+.btn-outline{border:2px solid var(--gold);color:var(--gold);background:transparent}
+.btn-outline:hover{background:var(--gold);color:var(--navy);text-decoration:none}
+
+/* SECTIONS */
+.section{padding:80px 2rem;max-width:1200px;margin:0 auto}
+.section-full{padding:80px 2rem}
+.section-title{text-align:center;font-size:2.2rem;margin-bottom:.5rem;color:var(--gold);letter-spacing:2px}
+.section-subtitle{text-align:center;color:var(--text-muted);margin-bottom:3rem;font-style:italic}
+.section-divider{width:80px;height:3px;background:var(--gold);margin:0 auto 3rem;border-radius:2px}
+
+/* SEAL */
+.seal-section{background:linear-gradient(180deg,var(--charcoal),var(--navy));text-align:center;padding:80px 2rem}
+.seal-section .seal-content{max-width:800px;margin:0 auto}
+.seal-prayer{background:rgba(212,168,67,.05);border:1px solid rgba(212,168,67,.2);border-radius:8px;padding:2rem;margin:2rem auto;font-style:italic;font-size:1.05rem;line-height:2;color:var(--cream)}
+.seal-prayer .prayer-title{color:var(--gold);font-weight:bold;font-style:normal;font-size:1.2rem;margin-bottom:1rem;display:block}
+
+/* MISSION */
+.mission-section{background:var(--navy)}
+.mission-text{max-width:900px;margin:0 auto;font-size:1.05rem;line-height:2;text-align:center;color:var(--cream)}
+.mission-text p{margin-bottom:1.5rem}
+
+/* QUOTE BANNER */
+.quote-banner{background:linear-gradient(135deg,var(--charcoal),#0f0f2e);padding:60px 2rem;text-align:center;border-top:1px solid rgba(212,168,67,.15);border-bottom:1px solid rgba(212,168,67,.15)}
+.quote-banner blockquote{max-width:800px;margin:0 auto;font-size:1.3rem;color:var(--cream);font-style:italic;line-height:1.9}
+.quote-banner .quote-attr{color:var(--gold);margin-top:1rem;font-style:normal;font-size:1rem}
+
+/* PILLARS GRID */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1200px;margin:0 auto}
+.pillar-card{background:linear-gradient(145deg,rgba(26,26,46,.9),rgba(17,17,51,.7));border:1px solid rgba(212,168,67,.15);border-radius:12px;padding:2rem;text-align:center;transition:all .4s;position:relative;overflow:hidden}
+.pillar-card:hover{transform:translateY(-6px);border-color:var(--gold);box-shadow:0 12px 40px rgba(212,168,67,.15)}
+.pillar-card .icon{font-size:2.5rem;margin-bottom:1rem}
+.pillar-card h3{color:var(--gold);margin-bottom:.5rem;font-size:1.1rem}
+.pillar-card p{color:var(--text-muted);font-size:.9rem;line-height:1.6}
+
+/* POSTS */
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1000px;margin:0 auto}
+.post-card{background:rgba(26,26,46,.8);border:1px solid rgba(212,168,67,.1);border-radius:8px;padding:1.5rem;transition:all .3s}
+.post-card:hover{border-color:var(--orange);transform:translateY(-3px)}
+.post-card h4{color:var(--orange);font-size:1rem;margin-bottom:.5rem}
+.post-card p{color:var(--text-muted);font-size:.85rem}
+.post-card a{color:var(--orange)}
+
+/* RESOURCE LINKS */
+.resources-section{background:linear-gradient(180deg,var(--navy),var(--charcoal))}
+.resource-category{margin-bottom:3rem}
+.resource-category h3{color:var(--gold);font-size:1.3rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(212,168,67,.2)}
+.resource-list{display:flex;flex-direction:column;gap:.6rem}
+.resource-list a{color:var(--orange);font-size:.95rem;padding:.3rem 0;display:block;transition:color .3s,padding-left .3s}
+.resource-list a:hover{color:var(--gold);padding-left:10px}
+.resource-list a::before{content:'☩ ';color:var(--gold);font-size:.8rem}
+
+/* RIGHT SIDEBAR LINKS */
+.alpha-links{columns:3;column-gap:2rem;max-width:1200px;margin:0 auto}
+.alpha-links a{display:block;color:var(--orange);font-size:.85rem;padding:.25rem 0;break-inside:avoid}
+.alpha-links a:hover{color:var(--gold)}
+
+/* PRAYERS */
+.prayer-block{background:rgba(212,168,67,.04);border:1px solid rgba(212,168,67,.15);border-radius:8px;padding:2rem;margin-bottom:2rem;max-width:800px;margin-left:auto;margin-right:auto}
+.prayer-block h3{color:var(--gold);margin-bottom:1rem;text-align:center}
+.prayer-block p{line-height:2;color:var(--cream);text-align:center;margin-bottom:1rem}
+
+/* ARCHIVE */
+.archive-list{max-width:600px;margin:0 auto;list-style:none}
+.archive-list li{padding:.6rem 0;border-bottom:1px solid rgba(212,168,67,.1);display:flex;justify-content:space-between;color:var(--cream)}
+.archive-list li span{color:var(--gold);font-weight:bold}
+
+/* LABELS */
+.labels-cloud{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;max-width:900px;margin:0 auto}
+.labels-cloud a{background:rgba(212,168,67,.1);border:1px solid rgba(212,168,67,.2);padding:.3rem .8rem;border-radius:20px;font-size:.8rem;color:var(--orange);transition:all .3s}
+.labels-cloud a:hover{background:var(--gold);color:var(--navy);text-decoration:none}
+
+/* CONNECT & CONTACT */
+.social-icons{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.social-icons a{width:60px;height:60px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.4rem;transition:all .3s}
+.social-icons a:hover{background:var(--gold);color:var(--navy);transform:scale(1.1);text-decoration:none}
+.contact-form{max-width:600px;margin:2rem auto 0;display:flex;flex-direction:column;gap:1rem}
+.contact-form input,.contact-form textarea{background:rgba(26,26,46,.8);border:1px solid rgba(212,168,67,.2);border-radius:6px;padding:.8rem 1rem;color:var(--cream);font-family:inherit;font-size:1rem}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold)}
+.contact-form textarea{min-height:120px;resize:vertical}
+
+/* FOOTER */
+.footer{background:var(--dark);text-align:center;padding:3rem 2rem;border-top:1px solid rgba(212,168,67,.15)}
+.footer p{color:var(--text-muted);font-size:.9rem}
+.footer .motto{color:var(--gold);font-size:1.1rem;margin-bottom:.5rem;letter-spacing:3px}
+
+/* VAULT OVERLAY */
+.vault-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;display:none;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.vault-overlay.open{display:flex}
+.vault-login{text-align:center;max-width:400px;width:90%}
+.vault-login h2{color:var(--gold);margin-bottom:1rem}
+.vault-login input{width:100%;padding:.8rem;background:rgba(26,26,46,.9);border:1px solid rgba(212,168,67,.3);border-radius:6px;color:var(--cream);font-size:1rem;margin-bottom:1rem;text-align:center}
+.vault-login input:focus{outline:none;border-color:var(--gold)}
+.vault-content{width:95%;max-width:900px;max-height:80vh;overflow-y:auto;display:none}
+.vault-content.unlocked{display:block}
+.vault-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+.vault-header h2{color:var(--gold)}
+.vault-files{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-top:1rem}
+.vault-file{background:rgba(26,26,46,.8);border:1px solid rgba(212,168,67,.15);border-radius:8px;padding:1rem;text-align:center;position:relative}
+.vault-file img{max-width:100%;max-height:120px;border-radius:4px;margin-bottom:.5rem}
+.vault-file .fname{color:var(--cream);font-size:.8rem;word-break:break-all}
+.vault-file .del-btn{position:absolute;top:4px;right:4px;background:var(--accent-red);color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:.7rem;display:flex;align-items:center;justify-content:center}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .pillars-grid{grid-template-columns:repeat(2,1fr)}
+  .posts-grid{grid-template-columns:1fr}
+  .alpha-links{columns:2}
+  .hero h1{font-size:2.4rem}
+}
+@media(max-width:640px){
+  .pillars-grid{grid-template-columns:1fr}
+  .alpha-links{columns:1}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero h1{font-size:1.8rem}
+  .hero .tagline{font-size:1rem}
+  .section-title{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+<div class="nav-inner">
+  <div class="nav-logo">☩ BRIAN ROARY</div>
+  <div class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#seal">Seal</a>
+    <a href="#mission">Mission</a>
+    <a href="#pillars">Pillars</a>
+    <a href="#posts">Posts</a>
+    <a href="#resources">Resources</a>
+    <a href="#prayers">Prayers</a>
+    <a href="#connect">Connect</a>
+    <span class="vault-btn" style="opacity:0.5;cursor:default" title="Vault available in app version only">🔒 Vault (App Only)</span>
+  </div>
+  <button class="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMobile()">Home</a>
+  <a href="#seal" onclick="closeMobile()">Seal</a>
+  <a href="#mission" onclick="closeMobile()">Mission</a>
+  <a href="#pillars" onclick="closeMobile()">Pillars</a>
+  <a href="#posts" onclick="closeMobile()">Posts</a>
+  <a href="#resources" onclick="closeMobile()">Resources</a>
+  <a href="#prayers" onclick="closeMobile()">Prayers</a>
+  <a href="#connect" onclick="closeMobile()">Connect</a>
+  <span class="vault-btn" style="opacity:0.5;cursor:default">🔒 Vault (App Only)</span>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-cross">☩</div>
+  <h1>BRIAN ROARY</h1>
+  <p class="tagline">Help Jesus Save the World as His Co-Worker &amp; Co-Heir</p>
+  <p class="scripture">"<em>That they all may be one; as thou, Father, art in me, and I in thee, that they also may be one in us: that the world may believe that thou hast sent me.</em>"<br>— John 17:21</p>
+  <div class="hero-ctas">
+    <a href="#mission" class="btn btn-gold">Our Mission</a>
+    <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank" class="btn btn-outline">Visit Blog</a>
+    <a href="#prayers" class="btn btn-outline">Prayers &amp; Devotions</a>
+  </div>
+</section>
+
+<!-- SEAL OF THE LIVING GOD -->
+<section class="seal-section reveal" id="seal">
+  <div class="seal-content">
+    <h2 class="section-title">Seal of the Living God</h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--cream);max-width:700px;margin:0 auto 2rem;font-size:1.05rem;">God the Father has given His children the Seal of the Living God for protection in the end times. Accept this Seal and recite this Crusade Prayer with faith.</p>
+    <div class="seal-prayer">
+      <span class="prayer-title">Crusade Prayer (33) — Seal of the Living God</span>
+      O my God, my loving Father,<br>
+      I accept with love and gratitude<br>
+      Your Divine Seal of Protection.<br>
+      Your Divinity encompasses my body and soul for eternity.<br><br>
+      I bow in humble thanksgiving<br>
+      and offer my profound love and loyalty<br>
+      to You, my Beloved Father.<br><br>
+      I beg You to protect me and my loved ones<br>
+      with this special Seal and<br>
+      I pledge my life to Your service forever and ever.<br><br>
+      I love You, Dear Father.<br>
+      I console You in these times, Dear Father.<br>
+      I offer You the Body, Blood, Soul and Divinity<br>
+      of Your dearly beloved Son<br>
+      in atonement for the sins of the world<br>
+      and for the salvation of all Your children.<br><br>
+      <strong>Amen.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section reveal" id="mission" style="background:var(--navy)">
+  <h2 class="section-title">The Eucharistic Marian Remnant Army</h2>
+  <div class="section-divider"></div>
+  <div class="mission-text">
+    <p>The Eucharistic Marian Remnant Army is a spiritual movement dedicated to the defense of the Holy Eucharist, devotion to the Blessed Virgin Mary, and the proclamation of the prophetic messages given to the world in these end times. We are soldiers of Christ, formed under the mantle of Our Lady, armed with the Rosary, the Scapular, and the Seal of the Living God.</p>
+    <p>In these times of great apostasy and tribulation, God the Father, Jesus Christ, and the Blessed Mother have spoken through chosen messengers to warn humanity, call souls to repentance, and prepare the faithful Remnant Church for the glorious era of peace — the Eucharistic Reign of the Sacred Heart and the triumph of the Immaculate Heart of Mary.</p>
+    <p>We stand firm in the Traditional teachings of the One, Holy, Catholic, and Apostolic Church. We reject the spirit of compromise and modernism that has infiltrated the sanctuary. We uphold the Holy Sacrifice of the Mass, Holy Communion received on the tongue, and the fullness of Catholic doctrine as handed down by the Apostles and the Magisterium.</p>
+    <p>Our mission is to evangelize, to spread the Crusade Prayers, to promote the Divine Will Spirituality of Luisa Piccarreta, and to help souls prepare for the Warning (Illumination of Conscience), the Great Miracle, and the coming of the New Era — the fulfillment of the Our Father: <em>"Thy Kingdom come, Thy Will be done, on earth as it is in Heaven."</em></p>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<section class="quote-banner reveal">
+  <blockquote>
+    "The Great Monarch will come when the world is in its darkest hour. He will restore all things in Christ and bring about the Eucharistic Reign of the Sacred Heart. The triumph of the Immaculate Heart of Mary will usher in an era of peace such as the world has never known."
+  </blockquote>
+  <p class="quote-attr">— Catholic Prophecy on the Great Monarch</p>
+</section>
+
+<!-- PILLARS OF DEVOTION -->
+<section class="section reveal" id="pillars">
+  <h2 class="section-title">Pillars of Devotion</h2>
+  <p class="section-subtitle">The spiritual weapons of the Remnant Army</p>
+  <div class="section-divider"></div>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="icon">📿</div>
+      <h3>The Holy Rosary</h3>
+      <p>The most powerful weapon given by Our Lady to defeat Satan and bring peace to the world. Pray all four mysteries daily.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">🌅</div>
+      <h3>Morning Offering &amp; Fusion Prayer</h3>
+      <p>Unite every action of your day with the Divine Will through the powerful Morning Offering and Rounds of the Divine Will.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">✝️</div>
+      <h3>Divine Will Spirituality</h3>
+      <p>The spirituality of Luisa Piccarreta — living in the Divine Will, the greatest sanctity, the fulfillment of the Our Father.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">🙏</div>
+      <h3>Crusade Prayers</h3>
+      <p>The prayers given by Jesus to the end-time prophet for the salvation of souls and the mitigation of chastisements.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">❤️‍🔥</div>
+      <h3>Sacred &amp; Immaculate Hearts</h3>
+      <p>Consecration to the Sacred Heart of Jesus and the Immaculate Heart of Mary — the two hearts that beat as one.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">🍞</div>
+      <h3>Holy Communion on the Tongue</h3>
+      <p>Receiving the Body, Blood, Soul, and Divinity of Christ with reverence, on the tongue, as the Church has always taught.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">🩸</div>
+      <h3>The Precious Blood</h3>
+      <p>Devotion to the Precious Blood of Jesus Christ — the price of our redemption, our shield against all evil.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">⚔️</div>
+      <h3>Victimhood of Love</h3>
+      <p>Offering oneself as a victim soul in union with Christ's sacrifice for the conversion of sinners and the salvation of souls.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="icon">👂</div>
+      <h3>Locutions from Heaven</h3>
+      <p>Messages received from Jesus, Mary, and God the Father for the guidance and protection of the faithful in these end times.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANT POSTS -->
+<section class="section-full reveal" id="posts" style="background:linear-gradient(180deg,var(--charcoal),var(--navy))">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 class="section-title">Important Posts</h2>
+    <p class="section-subtitle">Essential reading for the Remnant Army</p>
+    <div class="section-divider"></div>
+    <div class="posts-grid">
+      <div class="post-card">
+        <h4><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/10/the-false-prophet-and-church-of.html" target="_blank">THE FALSE PROPHET AND THE CHURCH OF DARKNESS</a></h4>
+        <p>Understanding the prophecies about the False Prophet, the antipope, and the parallel Church of Darkness foretold in scripture and private revelation.</p>
+      </div>
+      <div class="post-card">
+        <h4><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/09/first-locution-message-from-jesus-christ.html" target="_blank">First Locution (message) from Jesus Christ</a></h4>
+        <p>The first interior locution received from Jesus Christ — a personal encounter with the living God calling souls to conversion.</p>
+      </div>
+      <div class="post-card">
+        <h4><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/10/promises-of-holy-communion-on-tongue.html" target="_blank">PROMISES OF HOLY COMMUNION ON THE TONGUE</a></h4>
+        <p>The extraordinary promises Jesus has made to those who receive Him reverently on the tongue in Holy Communion.</p>
+      </div>
+      <div class="post-card">
+        <h4><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/09/paradisical-locution-from-interior.html" target="_blank">Paradisical Locution from the Immaculate Conception</a></h4>
+        <p>A beautiful heavenly locution from the Blessed Virgin Mary revealing the glories of Paradise and God's plan for His children.</p>
+      </div>
+      <div class="post-card">
+        <h4><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/10/the-life-offering.html" target="_blank">THE LIFE OFFERING</a></h4>
+        <p>The ultimate act of love — offering one's entire life as a holocaust of love for the salvation of souls in union with Christ.</p>
+      </div>
+      <div class="post-card">
+        <h4><a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:9f47c899-a7cb-4d81-91a4-" target="_blank">BOOK OF TRUTH .PDF FILE</a></h4>
+        <p>Download the complete Book of Truth — the prophetic messages given to Maria Divine Mercy for the end times.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEFT SIDEBAR RESOURCES -->
+<section class="section-full reveal" id="resources" style="background:linear-gradient(180deg,var(--navy),var(--charcoal))">
+  <div style="max-width:1100px;margin:0 auto">
+    <h2 class="section-title">Sidebar Resource Links</h2>
+    <p class="section-subtitle">Essential resources from the blog sidebar</p>
+    <div class="section-divider"></div>
+
+    <div class="resource-category">
+      <h3>📖 Essential Reading &amp; Truth</h3>
+      <div class="resource-list">
+        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:9f47c899-a7cb-4d81-91a4-" target="_blank">BOOK OF TRUTH PDF FILE</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">JESUSTOMAN (BOOK OF TRUTH RESOURCE)</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">BOOK OF TRUTH MESSAGES AND REFERENCES</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">BOOK OF TRUTH MESSAGES (DOWNLOADABLE PICTURES)</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">BOOK OF TRUTH MESSAGES (DOWNLOADABLE PICTURES 2)</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">BOOK OF TRUTH MESSAGES ALBUM</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">BOOK OF TRUTH MESSAGES ALBUM 2</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">FIRST LOCUTION/MESSAGE IN PICTURE FORM FROM JESUS</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">THE FALSE PROPHET AND THE CHURCH OF DARKNESS</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">BIBLICAL AVENGERS END GAME (GODINCIDENT)</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">THE ILLUMINATION OF CONSCIENCE - THE WARNING</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">SIGNS OF THE TIMES</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">END TIME ARMORY - ESSENTIALS</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>🌟 Apparitions &amp; Prophecy</h3>
+      <div class="resource-list">
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">THE FLAME OF LOVE - WOMAN</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">THE ANGEL OF PEACE - LUZ DE MARIA</a>
+        <a href="https://www.philomena.org" target="_blank">St. PHILOMENA.ORG</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">LOCUTION FROM ADAM AND EVE</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">PARADISICAL LOCUTION: HOPE FOR THOSE INVOLVED IN HOMOSEXUALITY/TRANSSEXUALITY/SEXUAL IMMORALITY</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>🙏 Prayer &amp; Devotion</h3>
+      <div class="resource-list">
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/09/prayer-catalogheavenly-weapons.html" target="_blank">HEAVENLY WEAPONS AND DEVOTIONS HERE TO DESTROY THE STRONGHOLDS OF SATAN</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">CRUSADE PRAYER CARDS TO DOWNLOAD</a>
+        <a href="https://www.ltdw.org/" target="_blank">DIVINE WILL PRAYERS</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">THE FLAME OF LOVE OF THE IMMACULATE HEART OF MARY (WHICH IS JESUS HIMSELF)</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">HEALING CRUSADE PRAYER 94</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">ORDER AGONIZING CRUCIFIX AND USEFUL SACRAMENTALS</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">FACETIME JESUS HERE OR DEDICATED YOUTUBE CHANNELS 'EUCHARISTIC ADORATION'</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>⛪ Catholic Church &amp; Resources</h3>
+      <div class="resource-list">
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">Teachings of Origen</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">The Other 23 Catholic Churches (Rites) and Why They Exist</a>
+        <a href="https://universalis.com" target="_blank">Universalis.com (Mass readings and resources)</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">EUCHARISTIC REIGN: MOVEMENT OF PRIESTS</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">WALK THE CROSS</a>
+        <a href="https://maryrefugeofsouls.com/" target="_blank">MARYREFUGEOFSOULS.COM</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">REMEMBER OUR BELOVED FRIENDS IN PURGATORY</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>🤝 Charity &amp; Action</h3>
+      <div class="resource-list">
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">CATHOLIC CHARITY RELIEF SERVICE</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">RED CROSS</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">WORLD FOOD PROGRAMME</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">Write or Call the White House</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">COURAGE INTERNATIONAL</a>
+        <a href="https://couragec.org" target="_blank">COURAGEC.ORG (SAME SEX SUPPORT)</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>💪 Health &amp; Testimony</h3>
+      <div class="resource-list">
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">THE CURE FOR ALL THINGS: IBOGAINE</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">PURE WORLD TRUTH</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">EMERGENT</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">ALOPECIA UNIVERSALIS TESTIMONY</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">JESUS LOVES YOU</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>📱 Media &amp; Community</h3>
+      <div class="resource-list">
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">RETURN TO TRADITION SPOTIFY</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank">Our Future With God forever</a>
+        <a href="https://link.me/eucharisticagent" target="_blank">https://link.me/eucharisticagent</a>
+      </div>
+    </div>
+
+    <div class="resource-category">
+      <h3>📚 Divine Will Spirituality</h3>
+      <div class="resource-list">
+        <a href="https://www.facebook.com/groups/304800332136459/" target="_blank">Divine Will Facebook Group</a>
+        <a href="https://bookofheaven.com/" target="_blank">Book of Heaven</a>
+        <a href="https://www.ltdw.org/" target="_blank">LTDW — Living in the Divine Will</a>
+        <a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/09/prayer-catalogheavenly-weapons.html" target="_blank">Prayer Catalog — Heavenly Weapons</a>
+        <a href="https://www.ltdw.org/morning-offering.html" target="_blank">Morning Offering in the Divine Will</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RIGHT SIDEBAR LINKS AND RESOURCES -->
+<section class="section-full reveal" id="linksresources" style="background:var(--navy)">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 class="section-title">Links and Resources</h2>
+    <p class="section-subtitle">Comprehensive directory of Catholic resources, blogs, and apostolates</p>
+    <div class="section-divider"></div>
+    <div class="alpha-links">
+      <a href="#">ACT OF LOVE PRAYER FROM JESUS</a>
+      <a href="#">AlanAmes</a>
+      <a href="https://bookofheaven.com/" target="_blank">BOOK OF HEAVEN</a>
+      <a href="#">BOOK OF TRUTH IS CONTAINED IN THE BIBLE</a>
+      <a href="#">BOOK OF TRUTH/END TIMES GALLERY</a>
+      <a href="#">BOOKOFTRUTHBLOGSPOT</a>
+      <a href="#">BOOKOFTRUTHFACEBOOK</a>
+      <a href="#">BookofTruthResources</a>
+      <a href="#">Catholic_Mind</a>
+      <a href="#">Catholicexorcism</a>
+      <a href="#">CATHOLICFOODGALLERY</a>
+      <a href="#">Catholicism</a>
+      <a href="#">Catholicityblog</a>
+      <a href="#">CATHOLICMASSTIME.ORG</a>
+      <a href="#">CatholicTheology</a>
+      <a href="#">Centeroftheimmaculateheart</a>
+      <a href="#">Choosing-him.</a>
+      <a href="#">CHRISTIANWAYPRAYERCHANNEL</a>
+      <a href="#">CO-REDEMPTRIX MADE MANIFEST/PROOF</a>
+      <a href="#">Complicitclergy</a>
+      <a href="#">CROSS OF FORGIVENESS - Marie Julie Jahenny</a>
+      <a href="#">CRUSADE/OTHER PRAYERS IMAGE GALLERY</a>
+      <a href="#">Daily Mass Readings</a>
+      <a href="#">DAILY PRAYER CHANNEL</a>
+      <a href="#">DAILYSCRIPTURE.NET</a>
+      <a href="#">Deliverancenetwork</a>
+      <a href="#">Didache</a>
+      <a href="#">Eucharistic Jesus - Virtualadoration</a>
+      <a href="#">Farrinto.blogspot</a>
+      <a href="#">FatherofLoveandMercy</a>
+      <a href="#">FatherSpeaks</a>
+      <a href="#">FeaturedWritings</a>
+      <a href="#">FIGHT AGAINST SIN - Romans/Hebrews/Study &amp; Live the Gospels</a>
+      <a href="#">FLAMEOFLOVEOFTHEIMMACULATEARTOFMARY</a>
+      <a href="#">FOLLOW/IMITATE - JESUS</a>
+      <a href="#">Fr. James Boric Podcast</a>
+      <a href="#">Fr. John Corapi Quote Gallery</a>
+      <a href="#">Fr.Borjan</a>
+      <a href="#">Fr.Josephlannuzzi</a>
+      <a href="#">Fr.Prezviteros</a>
+      <a href="#">FrCelsowebsite</a>
+      <a href="#">FrCelsoYoutubeChannel</a>
+      <a href="#">Fsubelmonte</a>
+      <a href="#">General Instruction of the Roman Missal</a>
+      <a href="#">GIOVANIPRO MANDURIA - VIRGIN OF THE EUCHARIST</a>
+      <a href="#">GIOVANIPRO MANDURIA - VIRGIN OF THE EUCHARIST 2</a>
+      <a href="#">GLOBAL VACCINATIONS ARE DEATH TRAPS DO RESEARCH/GOD ALREADY GAVE US ORGANIC REMEDIES</a>
+      <a href="#">GLYNDA LOMAX</a>
+      <a href="#">GOD THE FATHER SPEAKS TO HIS CHILDREN</a>
+      <a href="#">GOD THE FATHER: THE ROLE OF SUFFERING</a>
+      <a href="#">GOD'S TRUE MYSTIC</a>
+      <a href="#">HOLY MASS EXPLAINED BY JESUS AND MARY</a>
+      <a href="#">HolyLove</a>
+      <a href="#">Home | St. Michael Center For Spiritual Renewal | United States</a>
+      <a href="https://itapiranga.org/" target="_blank">https://itapiranga.org/</a>
+      <a href="https://manduriapparitions.blogspot.com/?m=0#" target="_blank">https://manduriapparitions.blogspot.com/</a>
+      <a href="https://smwa.org/home.htm" target="_blank">https://smwa.org/home.htm</a>
+      <a href="https://www.catholictradition.org/main-index.htm" target="_blank">https://www.catholictradition.org/main-index.htm</a>
+      <a href="https://www.ltdw.org/questions--answers.html" target="_blank">https://www.ltdw.org/questions--answers.html</a>
+      <a href="#">IamJesus.net</a>
+      <a href="https://www.instagram.com/rosary_ihs" target="_blank">Instagram</a>
+      <a href="#">Jeromechong</a>
+      <a href="#">JESUS WARNED US ABOUT COVID VACCINATION</a>
+      <a href="#">Jesus-passion.com</a>
+      <a href="#">JESUS'S PROMISES OF HOLY COMMUNION ON THE...</a>
+      <a href="#">JOIN THE REMNANT ARMY OF JESUS CHRIST</a>
+      <a href="#">Joyofpenance</a>
+      <a href="#">Kathleencarthy</a>
+      <a href="#">Knightsoftheholyeucharist</a>
+      <a href="#">Lifesitenews</a>
+      <a href="#">Lionessblog</a>
+      <a href="#">Little pebble</a>
+      <a href="#">LittlelestSouls</a>
+      <a href="#">LivingFaithDailyYoutubeChannel</a>
+      <a href="#">Locutionsonline</a>
+      <a href="#">LOGOS</a>
+      <a href="#">Magisterium AI</a>
+      <a href="#">MARIAVALTO RTA</a>
+      <a href="#">Marie-Juliejahenny.blogspot.com</a>
+      <a href="https://maryrefugeofsouls.com/" target="_blank">Maryrefuseofsouls</a>
+      <a href="#">MDM Message List</a>
+      <a href="#">Medjugorje</a>
+      <a href="#">Miracleofthe Saints</a>
+      <a href="#">More Orthodox Food</a>
+      <a href="#">More Orthodox Food 2</a>
+      <a href="#">MOST POWERFUL OFFERINGS AND PRAYERS IN GOD'S DIVINE WILL</a>
+      <a href="#">MOTHERMIRIAM</a>
+      <a href="https://www.facebook.com/brian.roary" target="_blank">MY FACEBOOK PAGE</a>
+      <a href="https://www.instagram.com/rosary_ihs" target="_blank">MY INSTAGRAM</a>
+      <a href="#">Mystic Rhondawise</a>
+      <a href="#">Mysticofthechurch</a>
+      <a href="#">Mysticpost</a>
+      <a href="#">Najumary</a>
+      <a href="#">Newadvent</a>
+      <a href="#">TheWildVoice</a>
+      <a href="#">ThyflameofLoveYoutubeChannel</a>
+      <a href="#">TruelifeinGod</a>
+      <a href="#">TrueRestoration</a>
+      <a href="#">TwoHeartsPress</a>
+      <a href="#">UniquelyMaryYoutubeChannel</a>
+      <a href="#">WEBSITE TO ORDER THE MEDAL OF SALVATION BOOK OF TRUTH VOLUMES AND SEAL OF THE LIVING GOD SCAPULAR/MEDAL</a>
+      <a href="#">Work of God</a>
+      <a href="#">Work of God Library 1</a>
+      <a href="#">Work of God Library 2</a>
+      <a href="#">WORLDWIDE LISTINGS FOR THE MISSION OF SALVATION</a>
+    </div>
+
+    <!-- Magisterium Links -->
+    <div class="resource-category" style="margin-top:3rem">
+      <h3>📜 Page Links Regarding the Magisterium</h3>
+      <div class="resource-list">
+        <a href="https://catholic365.com" target="_blank">Catholic365</a>
+        <a href="https://fatima.org" target="_blank">Fatima.org</a>
+      </div>
+    </div>
+
+    <!-- Return To Tradition -->
+    <div class="resource-category">
+      <h3>🎙️ Return To Tradition</h3>
+      <div class="resource-list">
+        <a href="#">Dictator BANS The Ordination Of Catholic Priests</a>
+        <a href="#">Sex Symbol Priest Shocks No One By Leaving The Priesthood</a>
+        <a href="#">Bombshell Report Shows Leo XIV Worshiped Pachamama In South America</a>
+      </div>
+    </div>
+
+    <!-- Catholic News Agency -->
+    <div class="resource-category">
+      <h3>📰 Catholic News Agency</h3>
+      <div class="resource-list">
+        <a href="https://www.catholicnewsagency.com/" target="_blank">Catholic News Agency — Latest News</a>
+      </div>
+    </div>
+
+    <!-- USCCB Daily Readings -->
+    <div class="resource-category">
+      <h3>📖 USCCB Daily Readings</h3>
+      <div class="resource-list">
+        <a href="https://bible.usccb.org/daily-bible-reading" target="_blank">USCCB Daily Bible Reading</a>
+      </div>
+    </div>
+
+    <!-- Labels -->
+    <div style="margin-top:3rem">
+      <h3 style="color:var(--gold);text-align:center;margin-bottom:1.5rem">🏷️ Labels</h3>
+      <div class="labels-cloud">
+        <a href="#">abomination</a><a href="#">ACT</a><a href="#">ACT OF LOVE</a><a href="#">Adam and Eve</a>
+        <a href="#">Adoration</a><a href="#">Alopecia Universalis</a><a href="#">Angels</a>
+        <a href="#">Catherine of Siena</a><a href="#">Catholic</a><a href="#">chain</a>
+        <a href="#">Chaplet</a><a href="#">Chaplet of the Heavenly Father</a><a href="#">Child</a>
+        <a href="#">Church</a><a href="#">Co-Redemptrix</a><a href="#">Comet</a>
+        <a href="#">Communion</a><a href="#">Conversation</a><a href="#">Conversion</a>
+        <a href="#">Crusade</a><a href="#">Crusade Prayers</a><a href="#">Decade</a>
+        <a href="#">Defense</a><a href="#">Design</a><a href="#">desolation</a>
+        <a href="#">devil</a><a href="#">Devotion</a><a href="#">Diary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRAYERS -->
+<section class="section-full reveal" id="prayers" style="background:linear-gradient(180deg,var(--charcoal),var(--navy))">
+  <div style="max-width:1200px;margin:0 auto">
+    <h2 class="section-title">Prayers &amp; Devotions</h2>
+    <p class="section-subtitle">Arm yourself with the weapons of Heaven</p>
+    <div class="section-divider"></div>
+
+    <div class="prayer-block">
+      <h3>☩ Prayer of Allegiance to the Sacred Heart</h3>
+      <p>O Sacred Heart of Jesus, I pledge my allegiance to You.<br>
+      I give You my body, my soul, my will, and my entire life.<br>
+      I consecrate to You all that I am and all that I have.<br>
+      Lead me, guide me, protect me, and use me<br>
+      as Your instrument of peace and salvation.<br>
+      I reject Satan and all his works and all his empty promises.<br>
+      I belong to You, Jesus, now and forever.<br>
+      <strong>Amen.</strong></p>
+    </div>
+
+    <div class="prayer-block">
+      <h3>🌅 The Most Powerful Morning Offering</h3>
+      <p>O Immaculate Heart of Mary, I offer you this day<br>
+      all my prayers, works, joys, and sufferings,<br>
+      in union with the Holy Sacrifice of the Mass throughout the world,<br>
+      in reparation for my sins, for the intentions of all our associates,<br>
+      for the reunion of Christendom, and in particular<br>
+      for the intentions of the Holy Father.<br><br>
+      I desire to fuse my entire being into the Divine Will,<br>
+      that every breath, heartbeat, and thought<br>
+      may be an act done in the Divine Will of God.<br>
+      I call upon all Creation to praise the Lord with me.<br>
+      <strong>Amen.</strong></p>
+      <p><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/09/the-most-powerful-morning-offering-and.html" target="_blank">Read the full Morning Offering on the blog →</a></p>
+    </div>
+
+    <div class="prayer-block">
+      <h3>⚔️ Prayer of the Victim Soul — Victimhood of Love</h3>
+      <p>O my Jesus, I offer myself to You as a victim of love,<br>
+      a holocaust of reparation for the sins of the world.<br>
+      Consume me with the fire of Your Divine Love.<br>
+      Let me suffer with You, for You, and in You,<br>
+      that souls may be converted and saved.<br>
+      I accept all trials, sufferings, and crosses<br>
+      that You permit in my life,<br>
+      united with Your Passion and Death on the Cross.<br>
+      Mary, my Mother, stand with me at the foot of the Cross.<br>
+      <strong>Amen.</strong></p>
+    </div>
+
+    <div class="prayer-block">
+      <h3>🙏 Crusade Prayer (33) — Seal of the Living God</h3>
+      <p>O my God, my loving Father,<br>
+      I accept with love and gratitude Your Divine Seal of Protection.<br>
+      Your Divinity encompasses my body and soul for eternity.<br>
+      I bow in humble thanksgiving and offer my profound love<br>
+      and loyalty to You, my Beloved Father.<br>
+      I beg You to protect me and my loved ones with this special Seal<br>
+      and I pledge my life to Your service forever and ever.<br>
+      I love You, Dear Father. I console You in these times, Dear Father.<br>
+      I offer You the Body, Blood, Soul and Divinity<br>
+      of Your dearly beloved Son in atonement for the sins of the world<br>
+      and for the salvation of all Your children.<br>
+      <strong>Amen.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG ARCHIVE -->
+<section class="section reveal" id="archive">
+  <h2 class="section-title">Blog Archive</h2>
+  <div class="section-divider"></div>
+  <ul class="archive-list">
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2026/03/" target="_blank">March 2026</a> <span>(2)</span></li>
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2026/02/" target="_blank">February 2026</a> <span>(6)</span></li>
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2026/01/" target="_blank">January 2026</a> <span>(9)</span></li>
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/12/" target="_blank">December 2025</a> <span>(19)</span></li>
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/11/" target="_blank">November 2025</a> <span>(10)</span></li>
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/10/" target="_blank">October 2025</a> <span>(36)</span></li>
+    <li><a href="https://eucharisticmarianremnantarmy.blogspot.com/2025/09/" target="_blank">September 2025</a> <span>(32)</span></li>
+  </ul>
+</section>
+
+<!-- CONNECT -->
+<section class="section-full reveal" id="connect" style="background:linear-gradient(180deg,var(--navy),var(--charcoal))">
+  <div style="max-width:800px;margin:0 auto;text-align:center">
+    <h2 class="section-title">Connect</h2>
+    <p class="section-subtitle">Join the Remnant Army across all platforms</p>
+    <div class="section-divider"></div>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/rosary_ihs" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.threads.net/@rosary_ihs" target="_blank" title="Threads"><i class="fab fa-threads"></i></a>
+      <a href="https://www.facebook.com/brian.roary" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://eucharisticmarianremnantarmy.blogspot.com" target="_blank" title="Blog"><i class="fab fa-blogger-b"></i></a>
+      <a href="https://link.me/eucharisticagent" target="_blank" title="Linktree"><i class="fas fa-link"></i></a>
+      <a href="#" title="Spotify — Return to Tradition"><i class="fab fa-spotify"></i></a>
+      <a href="mailto:myheroonejustice@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section reveal" id="contact">
+  <h2 class="section-title">Contact</h2>
+  <p class="section-subtitle">Reach out for prayer requests, questions, or fellowship</p>
+  <div class="section-divider"></div>
+  <p style="text-align:center;margin-bottom:1rem">
+    <a href="mailto:myheroonejustice@gmail.com"><i class="fas fa-envelope"></i> myheroonejustice@gmail.com</a>
+  </p>
+  <div class="contact-form" id="contactForm">
+    <input type="text" placeholder="Your Name" id="cfName">
+    <input type="email" placeholder="Your Email" id="cfEmail">
+    <textarea placeholder="Your Message..." id="cfMsg"></textarea>
+    <button class="btn btn-gold" onclick="submitContact()" style="align-self:center">Send Message</button>
+    <p id="cfStatus" style="text-align:center;color:var(--gold);display:none"></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="motto">Regnum Eucharisticum · IHS · Catholica Monarchia</p>
+  <p>☩ Ad Maiorem Dei Gloriam ☩</p>
+  <p style="margin-top:.5rem">© 2025–2026 Brian Roary — Eucharistic Marian Remnant Army</p>
+</footer>
+
+<!-- Vault feature available in app version only -->
+
+<script>
+// === NAVBAR SCROLL ===
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// === MOBILE MENU ===
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+// === SCROLL REVEAL ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// === CONTACT FORM ===
+function submitContact() {
+  const name = document.getElementById('cfName').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
+  const msg = document.getElementById('cfMsg').value.trim();
+  const status = document.getElementById('cfStatus');
+  if (!name || !email || !msg) { status.textContent = 'Please fill in all fields.'; status.style.display = 'block'; return; }
+  // Standalone version: open mailto link
+  const subject = encodeURIComponent('Message from ' + name);
+  const body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + msg);
+  window.open('mailto:myheroonejustice@gmail.com?subject=' + subject + '&body=' + body);
+  status.textContent = '✓ Opening email client... God bless you.';
+  status.style.color = 'var(--gold)';
+  status.style.display = 'block';
+}
+
+
+
+</script>
+</body>
+</html>
